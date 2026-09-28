@@ -216,19 +216,14 @@ img {
     padding: 50px 10px 8px;
 }
 
-    
-
-    .reward-card.selected, 
 
 
-
-
-.reward-card:hover,
-.package-card:hover {
-    border-color: #ffe27a;
-    box-shadow: 0 0 9px rgba(255,221,103,.9), 0 0 20px rgba(255,215,80,.28);
-    z-index: 2;
-}
+    .reward-card.selected,
+    .reward-card:hover,
+    .package-card:hover {
+        border-color: #ffe27a;
+        z-index: 2;
+    }
 
 .reward-card:focus-visible, .package-card:focus-visible {
     outline: 2px solid #ffe27a;
