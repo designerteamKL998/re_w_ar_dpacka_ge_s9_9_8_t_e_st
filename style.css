@@ -1,0 +1,673 @@
+:root {
+    --header:#1e466d;
+    --header2:#22527f;
+    --bg:#050a0f;
+    --card:#111a31;
+    --line:#144a79;
+    --gold:#ffd762;
+    --green:#7ee94e;
+    --red:#ff3e4c;
+    --text:#f4f6fb;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+html, body {
+    margin: 0;
+    background: #050a0f;
+    color: var(--text);
+    font-family: Inter,-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif;
+}
+
+body {
+    overflow-x: hidden;
+    background-image: linear-gradient(rgba(3,8,14,.74),rgba(3,8,14,.82)),url('assets/page-bg.jpg');
+    background-size: cover;
+    background-attachment: fixed;
+}
+
+button {
+    border: 0;
+    font: inherit;
+    cursor: pointer;
+}
+
+img {
+    display: block;
+}
+
+.header {
+    height: 65px;
+    background: var(--header);
+}
+
+.topbar {
+    height: 34px;
+    display: flex;
+    align-items: center;
+    padding: 0 15px;
+}
+
+.logo {
+    width: 83px;
+    height: auto;
+}
+
+.account {
+    margin-left: auto;
+    display: flex;
+    align-items: center;
+    gap: 0;
+}
+
+.balance {
+    height: 27px;
+    border-left: 2px solid #8cae1c;
+    padding: 1px 10px;
+    min-width: 93px;
+}
+
+    .balance span {
+        display: block;
+        font-size: 5px;
+        letter-spacing: .7px;
+        margin-bottom: 2px;
+    }
+
+    .balance b {
+        font-size: 13px;
+    }
+
+    .balance em {
+        font-size: 6px;
+    }
+
+.actions {
+    display: flex;
+}
+
+    .actions button {
+        height: 23px;
+        padding: 0 25px;
+        font-size: 8px;
+        font-weight: 700;
+    }
+
+.deposit {
+    background: #7ebc29;
+    border-radius: 6px 0 0 6px;
+}
+
+.withdraw {
+    background: #1f5c91;
+    color: #fff;
+    border-radius: 0 6px 6px 0;
+}
+
+.person {
+    margin-left: 20px;
+    font-size: 9px;
+}
+
+.user {
+    font-size: 8px;
+    margin: 0 10px;
+}
+
+.language {
+    height: 25px;
+    padding: 0 13px;
+    background: transparent;
+    border: 1px solid #3b5367;
+    color: #fff;
+    border-radius: 15px;
+    font-size: 8px;
+}
+
+.mobile-actions {
+    display: none;
+}
+
+.nav {
+    height: 31px;
+    display: flex;
+    align-items: center;
+    padding: 0 15px;
+}
+
+    .nav a {
+        height: 24px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        min-width: 75px;
+        padding: 0 25px;
+        border-radius: 4px;
+        font-size: 13px;
+    }
+
+        .nav a.selected {
+            background: #22527f;
+        }
+
+    .nav i {
+        height: 9px;
+        border-left: 1px solid #71859a;
+    }
+
+.banners {
+    height: 96px;
+    padding: 2px 13px 0;
+    display: grid;
+    grid-template-columns: repeat(3,1fr);
+    gap: 5px;
+    background: #05090e;
+}
+
+    .banners img {
+        width: 100%;
+        height: 200px;
+        object-fit: cover;
+    }
+
+.section {
+    padding-left: 53px;
+    padding-right: 53px;
+}
+
+.rewards {
+    padding-top: 135px;
+}
+
+.section h2 {
+    font-size: 16px;
+    line-height: 1.2;
+    margin: 0 0 28px;
+    font-weight: 700;
+}
+
+.reward-row {
+    display: flex;
+    gap: 14px;
+    overflow-x: auto;
+    overflow-y: hidden;
+    /* Space for the tag outside the card */
+    padding: 18px 3px 8px;
+    scrollbar-width: none;
+}
+
+    .reward-row::-webkit-scrollbar {
+        display: none;
+    }
+
+.reward-card {
+    flex: 1 0 calc((100% - 70px)/6);
+    min-width: 220px;
+}
+
+.reward-card {
+    height: 200px;
+    position: relative;
+    background: linear-gradient(145deg,#17213a,#0c1429);
+    border: 1px solid var(--line);
+    border-radius: 10px;
+    padding: 50px 10px 8px;
+}
+
+    
+
+    .reward-card.selected, 
+
+
+
+
+.reward-card:hover,
+.package-card:hover {
+    border-color: #ffe27a;
+    box-shadow: 0 0 9px rgba(255,221,103,.9), 0 0 20px rgba(255,215,80,.28);
+    z-index: 2;
+}
+
+.reward-card:focus-visible, .package-card:focus-visible {
+    outline: 2px solid #ffe27a;
+    outline-offset: 2px;
+}
+
+.status {
+    position: absolute;
+    top: -16px;
+    left: 20px;
+    height: 30px;
+    min-width: 105px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0 22px;
+    border-radius: 10px 0 20px 0;
+    font-size: 12px;
+    font-weight: 800;
+    line-height: 1;
+    z-index: 10;
+}
+
+.status.green {
+        background: var(--green);
+        color: #0b1806;
+    }
+
+    .status.red {
+        background: var(--red);
+        color: #fff;
+    }
+
+.reward-icon {
+    position: absolute;
+    right: 12px;
+    top: 12px;
+    width: 42px;
+    height: 42px;
+    object-fit: contain;
+    filter: grayscale(1) brightness(1.65);
+    opacity: .72;
+}
+
+.r-title {
+    font-size: 15px;
+    font-weight: 700;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.r-value {
+    font-size: 16px;
+    color: #ffd952;
+    font-weight: 700;
+    margin-top: 5px;
+}
+
+.reward-card p {
+    font-size: 12px;
+    line-height: 1.4;
+    margin: 4px 0 0;
+    overflow: hidden;
+}
+
+.reward-card button, .package-card button {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    bottom: -8px;
+    background: var(--gold);
+    height: 32px;
+    min-width: 120px;
+    padding: 0 14px;
+    border: 1px solid transparent;
+    border-radius: 7px;
+    color: #111;
+    font-size: 12px;
+    font-weight: 700;
+    transition: background-color .18s ease,color .18s ease,border-color .18s ease,box-shadow .18s ease;
+}
+
+    .reward-card button:hover, .package-card button:hover {
+        background: #0C1431;
+        color: #fff;
+        border-color: #ffd762;
+        box-shadow: 0 0 0 1px rgba(255,215,98,.25),0 4px 12px rgba(255,215,98,.16);
+    }
+
+.dots {
+    height: 13px;
+    margin-top: 12px;
+    display: flex;
+    justify-content: center;
+    gap: 5px;
+}
+
+    .dots > * {
+        width: 24px;
+        height: 3px;
+        border-radius: 4px;
+        background: #e6e7ea;
+    }
+
+    .dots b {
+        background: #ffd500;
+    }
+
+.packages {
+    padding-top: 0;
+}
+
+    .packages h2 {
+        margin-bottom: 4px;
+    }
+
+.intro {
+    font-size: 12px;
+    margin: 0 0 5px;
+}
+
+.entitlements {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 14px;
+    font-size: 11px;
+}
+
+    .entitlements span {
+        display: flex;
+        align-items: center;
+        gap: 3px;
+        white-space: nowrap;
+    }
+
+    .entitlements img {
+        width: 13px;
+        height: 13px;
+        object-fit: contain;
+    }
+
+.package-row {
+    display: flex;
+    gap: 18px;
+    overflow-x: auto;
+    overflow-y: hidden;
+    padding: 18px 3px 12px;
+    scrollbar-width: none;
+}
+
+    .package-row::-webkit-scrollbar {
+        display: none;
+    }
+
+.package-card {
+    height: 200px;
+    flex: 1 0 calc((100% - 54px)/4);
+    min-width: 280px;
+    position: relative;
+    border: 1px solid var(--line);
+    border-radius: 10px;
+    background: linear-gradient(145deg,#17213a,#0c1429);
+    padding: 25px 13px;
+    font-size: 12px;
+    line-height: 1.45;
+}
+
+    .package-card h3 {
+        margin: 0;
+        font-size: 15px;
+    }
+
+    .package-card strong {
+        font-size: 16px;
+        color: #ffd952;
+    }
+
+.badge {
+    position: absolute;
+    top: -16px;
+    left: 20px;
+    min-width: 65px;
+    height: 32px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0 16px;
+    background: #ffd65c;
+    color: #111;
+    font-size: 15px;
+    font-weight: 800;
+    border-radius: 10px 0 20px 0;
+    z-index: 10;
+    border-radius: 10px 0 20px 0;
+}
+
+.package-icon {
+    position: absolute;
+    right: 10px;
+    top: 7px;
+    width: 42px;
+    height: 42px;
+    object-fit: contain;
+    opacity: .7;
+}
+
+.pkg-icons {
+    position: absolute;
+    left: 13px;
+    right: 13px;
+    bottom: 50px;
+    height: 50px;
+    border: 1px solid #144a79;
+    border-radius: 5px;
+    background: #121d38;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 35px;
+}
+
+    .pkg-icons img {
+        width: 30px;
+        height: 30px;
+        object-fit: contain;
+    }
+
+        .pkg-icons img.active {
+            opacity: 1;
+        }
+
+        .pkg-icons img.inactive {
+            opacity: .28;
+        }
+
+.package-card button {
+    min-width: 91px;
+}
+
+.providers {
+    padding-top: 30px;
+    padding-bottom: 10px;
+}
+
+.provider-tools {
+    height: 17px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 11px;
+    color: #050505;
+}
+
+.provider-grid {
+    display: grid;
+    grid-template-columns: repeat(8, 202px);
+    gap: 6px;
+    align-items: start;
+}
+
+    .provider-grid img {
+    display: block;
+    width: 202px;
+    height: 250px;
+    object-fit: cover;
+    border-radius: 3px;
+}
+
+/* Mobile provider layout: 3 products per row */
+@media (max-width:700px) {
+    .providers {
+        padding-left: 17px;
+        padding-right: 17px;
+        padding-top: 48px;
+        padding-bottom: 10px;
+        overflow: hidden;
+    }
+
+    .provider-tools {
+        display: none;
+    }
+
+    .provider-grid {
+        width: 100%;
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 7px;
+        align-items: start;
+    }
+
+    .provider-grid img {
+        width: 100%;
+        height: auto;
+        aspect-ratio: 202 / 250;
+        object-fit: cover;
+        display: block;
+    }
+}
+
+
+/* =========================================================
+   MOBILE ONLY — header + large hero banner
+   ========================================================= */
+@media (max-width: 700px) {
+
+    html,
+    body {
+        width: 100%;
+        min-width: 0;
+        overflow-x: hidden;
+    }
+
+    /* Mobile header: Logo | EN | Menu */
+    .header {
+        height: 70px;
+        background: #1e466d;
+    }
+
+    .topbar {
+        height: 70px;
+        width: 100%;
+        padding: 0 16px;
+        display: flex;
+        align-items: center;
+    }
+
+    .logo {
+        width: 112px;
+        height: auto;
+        flex: 0 0 auto;
+    }
+
+    .account,
+    .nav {
+        display: none;
+    }
+
+    .mobile-actions {
+        display: flex;
+        align-items: center;
+        justify-content: flex-end;
+        gap: 18px;
+        margin-left: auto;
+    }
+
+    .mobile-actions .language {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        height: 42px;
+        min-width: 92px;
+        padding: 0 15px;
+        background: transparent;
+        border: 1px solid #45627a;
+        border-radius: 22px;
+        color: #fff;
+        font-size: 13px;
+        white-space: nowrap;
+    }
+
+    .hamburger {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 28px;
+        height: 42px;
+        padding: 0;
+        background: transparent;
+        color: #fff;
+        font-size: 26px;
+        line-height: 1;
+    }
+
+    /* One large banner directly below the header */
+    .banners {
+        width: 100%;
+        height: 184px;
+        padding: 0;
+        display: block;
+        overflow: hidden;
+        background: #05090e;
+    }
+
+    .banners img {
+        display: none;
+    }
+
+    .banners img:nth-child(3) {
+        display: block;
+        width: 100%;
+        height: 184px;
+        object-fit: cover;
+        object-position: center center;
+    }
+
+    /* Content starts directly below the big banner */
+    .section {
+        padding:10px;
+    }
+
+    .rewards {
+        padding-top: 27px;
+    }
+
+    .section h2 {
+        font-size: 18px;
+        margin-bottom: 26px;
+    }
+}
+
+
+/* Claim Your Rewards — clickable pagination dots */
+.dots {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 7px;
+    margin-top: 12px;
+}
+
+.dots .reward-dot {
+    width: 8px;
+    height: 8px;
+    padding: 0;
+    margin: 0;
+    border: 0;
+    border-radius: 50%;
+    background: #6d7480;
+    cursor: pointer;
+    transition: background .2s ease, transform .2s ease;
+}
+
+.dots .reward-dot:hover,
+.dots .reward-dot.active {
+    background: #ffd700;
+}
+
+.dots .reward-dot:hover {
+    transform: scale(1.2);
+}
